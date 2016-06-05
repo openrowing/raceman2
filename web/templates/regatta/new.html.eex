@@ -1,0 +1,6 @@
+<h2>New regatta</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: regatta_path(@conn, :create) %>
+
+<%= link "Back", to: regatta_path(@conn, :index) %>

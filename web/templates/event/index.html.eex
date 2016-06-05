@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h4>Events</h4>
+    <table class="table">
+      <%= for event <- @events do %>
+      <tr>
+        <td><%= event.number %></td>
+        <td><%= event.abbr %></td>
+        <td><%= event.name %></td>
+        <td><%= link gettext("Boats"), to: boat_url(@conn, :index, @regatta.id, event.id) %></td>
+      </tr>
+      <tr>
+        <td colspan=4>
+          <ul>
+          <%= for race <- event.races do %>
+            <li><%= link "#{race.race_type.name} #{race.number}", to: race_url(@conn, :show, race.id) %> (<%= race.started %>)</li>
+          <% end %>
+          </ul>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>

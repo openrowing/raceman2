@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h4>Boats</h4>
+    <table class="table">
+      <%= for boat <- @boats do %>
+      <tr>
+        <td><%= boat.number %></td>
+        <td><%= boat.team_name %></td>
+        <td>
+          <%= Enum.join((for rower_boat <- boat.rower_boats, do: "#{rower_boat.rower.forename} #{rower_boat.rower.surname} (#{rower_boat.position})"), ", ") %>
+        </td>
+        <td><%= boat.number %></td>
+      </tr>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

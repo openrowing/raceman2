@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h4>Race <%= @race.race_type.name %> <%= @race.number %></h4>
+    <table class="table">
+      <tr>
+        <th><%= gettext "place" %></th>
+        <th><%= gettext "boat number" %> / <%= gettext "lane started" %></th>
+        <th><%= gettext "team name" %> / <%= gettext "rowers" %></th>
+        <th><%= gettext "times" %></th>
+      </tr>
+      <%= for race_boat <- @race_boats do %>
+      <tr>
+        <td><%= race_boat.place %></td>
+        <td><%= race_boat.boat.number %> (<%= race_boat.lane_started %>)</td>
+        <td>
+          <strong><%= race_boat.boat.team_name %></strong><br>
+        <em>
+          <%= Enum.join((for rower_boat <- race_boat.boat.rower_boats, do: "#{rower_boat.rower.forename} #{rower_boat.rower.surname} (#{rower_boat.rower.year})"), ", ") %>
+        </em>
+        </td>
+        <td>
+            <%= Enum.join((for time <- race_boat.times, do: "#{time.time} (#{time.measuring_point.position})"), ", ") %>
+        </td>
+      </tr>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

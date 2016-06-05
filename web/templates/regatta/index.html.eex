@@ -1,0 +1,30 @@
+<h2>Listing regattas</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>From</th>
+      <th>To</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for regatta <- @regattas do %>
+    <tr>
+      <td><%= regatta.name %></td>
+      <td><%= regatta.from %></td>
+      <td><%= regatta.to %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: regatta_path(@conn, :show, regatta), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: regatta_path(@conn, :edit, regatta), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: regatta_path(@conn, :delete, regatta), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New regatta", to: regatta_path(@conn, :new) %>

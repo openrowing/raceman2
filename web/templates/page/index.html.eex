@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <h2><%= gettext "Result service" %></h2>
+  <p class="lead"><%= gettext "View results online, live" %></p>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h4>Regattas</h4>
+    <p class="lead">Please choose a regatta first</p>
+    <ul>
+      <%= for regatta <- @regattas do %>
+      <li>
+        <%= link regatta.name, to: event_path(@conn, :index, regatta.id) %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

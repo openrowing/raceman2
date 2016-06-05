@@ -1,0 +1,23 @@
+<h2>Show regatta</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @regatta.name %>
+  </li>
+
+  <li>
+    <strong>From:</strong>
+    <%= @regatta.from %>
+  </li>
+
+  <li>
+    <strong>To:</strong>
+    <%= @regatta.to %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: regatta_path(@conn, :edit, @regatta) %>
+<%= link "Back", to: regatta_path(@conn, :index) %>
